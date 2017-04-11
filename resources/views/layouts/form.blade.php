@@ -7,7 +7,7 @@
                     &nbsp;<span class="required"><sup>*</sup>required</span></label>
                 <div class="col-xs-4">
                     <input type="number" min="1" class="form-control" id="numberToSplit" name="numberToSplit"
-                          value="{{ old('numberToSplit') }}}">
+                          value="{{ old('numberToSplit') }}">
                 </div>
             </div>
             @if($errors->get('numberToSplit'))
