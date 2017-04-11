@@ -13,6 +13,9 @@
 
 Route::get('/', 'WelcomeController');
 
+Route::get('/submit', 'WelcomeController@splitter');
+Route::post('/submit', 'WelcomeController@splitter');
+
 if(config('app.env') == 'local'){
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 }
