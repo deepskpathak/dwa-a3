@@ -10,7 +10,7 @@ class WelcomeController extends Controller
 
     public function __invoke()
     {
-        // send the welcome view
+        // send the welcome view with null results as we are using same single page
         return view('welcome')->with([
             'value' => null
         ]);
@@ -20,19 +20,27 @@ class WelcomeController extends Controller
     // params - GET request Params
     // return - success or error message
     public function splitter(Request $request) {
-        $value = 34;
+
+        # Validate the request data
+        $this->validate($request, [
+            'amountToSplit' => 'required|numeric',
+            'numberToSplit' => 'required|numeric',
+
+        ]);
+
+        $value = null; // initialize the return
         $amountToSplit = $request->input('amountToSplit');
         $numberToSplit = $request->input('numberToSplit');
         $roundUp =  $request->has('roundUp');
 
         $compute = $amountToSplit / $numberToSplit;
 
-        if($roundUp) {
+        if($roundUp && $roundUp == 'true') {
             $compute = round($compute);
         }
 
         return view('welcome')->with([
-            'value' => $compute
+            'value' => $compute,
         ]);
     }
 }

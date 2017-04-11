@@ -7,16 +7,30 @@
                     &nbsp;<span class="required"><sup>*</sup>required</span></label>
                 <div class="col-xs-4">
                     <input type="number" min="1" class="form-control" id="numberToSplit" name="numberToSplit"
-                           required>
+                          value="{{ old('numberToSplit') }}}">
                 </div>
             </div>
+            @if($errors->get('numberToSplit'))
+                <ul>
+                    @foreach($errors->get('numberToSplit') as $error)
+                        <li><span class="text-danger">{{ $error }}</span></li>
+                    @endforeach
+                </ul>
+            @endif
             <div class="form-group">
                 <label for="amountToSplit" class="col-xs-4 control-label">How much was the tab? &nbsp;<span
                             class="required"><sup>*</sup>required</span></label>
                 <div class="col-xs-4">
-                    <input type="text" class="form-control" id="amountToSplit" name="amountToSplit" required>
+                    <input type="text" class="form-control" id="amountToSplit" name="amountToSplit">
                 </div>
             </div>
+            @if($errors->get('amountToSplit'))
+                <ul>
+                    @foreach($errors->get('amountToSplit') as $error)
+                        <li><span class="text-danger">{{ $error }}</span></li>
+                    @endforeach
+                </ul>
+            @endif
             <div class="form-group">
                 <label for="select" class="col-xs-4 control-label">How was the service?</label>
                 <div class="col-xs-4">
@@ -30,12 +44,12 @@
             <div class="form-group">
                 <label for="roundUp" class="col-xs-4 control-label">Round Up? </label>
                 <div class="col-xs-4">
-                    <input type="checkbox" class="" id="roundUp" value="" name="roundUp">
+                    <input type="checkbox" class="" id="roundUp" value="checked" name="roundUp">
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-lg-10 col-lg-offset-4">
-                    <button type="reset" class="btn btn-default"><a href="/">Reset</a></button>
+                    <a href="/" class="btn btn-default">Reset</a>
                     <button type="submit" class="btn btn-success">Calculate</button>
                 </div>
             </div>
